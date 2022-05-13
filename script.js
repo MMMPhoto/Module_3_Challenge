@@ -9,15 +9,12 @@ const special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ','
 
 // Write password to the #password input
 function writePassword() {
-
   var password = generatePassword();
-  
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
+// Generate Password
 function generatePassword () {
 
   // Prompt user for desired length of password
@@ -44,7 +41,17 @@ function generatePassword () {
   // Ask user if they want to use lower case characters
   var wantSpecial = confirm("Would you like to use special characters in your password? Click OK for Yes, Cancel for No.");
 
-  return 123456;
+
+  //Random function
+  var passwordTest = getRandom();
+  
+  
+  function getRandom() {
+    randomNumber = Math.floor(Math.random() * lowerCase.length);
+    return randomNumber;
+  }
+
+  return passwordTest; 
 
 }
  
