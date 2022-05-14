@@ -30,22 +30,19 @@ function generatePassword () {
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Please try again. Password must be between 8 and 128.");
   }
-  // Ask user if they want to use lower case characters
-  var wantLowerCase = confirm("Would you like to use lower case characters in your password? Click OK for Yes, Cancel for No.");
 
-  // Ask user if they want to use lower case characters
-  var wantUpperCase = confirm("Would you like to use upper case characters in your password? Click OK for Yes, Cancel for No.");
-
-  // Ask user if they want to use lower case characters
-  var wantNumbers = confirm("Would you like to use numbers in your password? Click OK for Yes, Cancel for No.");
-
-  // Ask user if they want to use lower case characters
-  var wantSpecial = confirm("Would you like to use special characters in your password? Click OK for Yes, Cancel for No.");
-
+  // Ask user to select parameters
+  while (!wantLowerCase && !wantUpperCase && !wantNumbers && !wantSpecial) {
+    var wantLowerCase = confirm("Would you like to use lower case characters in your password? Click OK for Yes, Cancel for No.");
+    var wantUpperCase = confirm("Would you like to use upper case characters in your password? Click OK for Yes, Cancel for No.");
+    var wantNumbers = confirm("Would you like to use numbers in your password? Click OK for Yes, Cancel for No.");var wantSpecial = confirm("Would you like to use special characters in your password? Click OK for Yes, Cancel for No.");
+    if (!wantLowerCase && !wantUpperCase && !wantNumbers && !wantSpecial) {
+      confirm("At least one parameter must be selected");
+    }
+  }
 
   // Build Array for Random Dataset
   var randomDataset = [];
-
   if (wantLowerCase) {
     randomDataset = lowerCase.concat();
   }
@@ -62,9 +59,7 @@ function generatePassword () {
   console.log(randomDataset);
 
   //Random function
-
   var randomPassword = getRandom();
-
   function getRandom() {
     for (var i = 0; i < passwordLength; i++) {
       var random = Math.floor(Math.random() * randomDataset.length);
@@ -75,7 +70,6 @@ function generatePassword () {
 
   // Output Random Result
   return randomPassword;
-
 }
  
 // Add event listener to generate button
