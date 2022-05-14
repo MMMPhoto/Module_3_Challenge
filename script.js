@@ -6,6 +6,7 @@ const lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "
 const upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
+var randomString = "";
 
 // Write password to the #password input
 function writePassword() {
@@ -46,7 +47,7 @@ function generatePassword () {
   var randomDataset = [];
 
   if (wantLowerCase) {
-    randomDataset = lowerCase.concat(); 
+    randomDataset = lowerCase.concat();
   }
   if (wantUpperCase) {
     randomDataset = upperCase.concat(randomDataset);
@@ -57,19 +58,23 @@ function generatePassword () {
   if (wantSpecial) {
     randomDataset = special.concat(randomDataset);
   }
-  
+
   console.log(randomDataset);
 
   //Random function
+
   var randomPassword = getRandom();
 
   function getRandom() {
-    randomNumber = Math.floor(Math.random() * lowerCase.length);
-    return randomNumber;
+    for (var i = 0; i < passwordLength; i++) {
+      var random = Math.floor(Math.random() * randomDataset.length);
+      randomString += randomDataset[random];
+    }
+    return randomString;
   }
 
   // Output Random Result
-  return randomPassword; 
+  return randomPassword;
 
 }
  
