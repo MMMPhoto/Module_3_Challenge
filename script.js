@@ -42,16 +42,34 @@ function generatePassword () {
   var wantSpecial = confirm("Would you like to use special characters in your password? Click OK for Yes, Cancel for No.");
 
 
+  // Build Array for Random Dataset
+  var randomDataset = [];
+
+  if (wantLowerCase) {
+    randomDataset = lowerCase.concat(); 
+  }
+  if (wantUpperCase) {
+    randomDataset = upperCase.concat(randomDataset);
+  }
+  if (wantNumbers) {
+    randomDataset = numbers.concat(randomDataset);
+  }
+  if (wantSpecial) {
+    randomDataset = special.concat(randomDataset);
+  }
+  
+  console.log(randomDataset);
+
   //Random function
-  var passwordTest = getRandom();
-  
-  
+  var randomPassword = getRandom();
+
   function getRandom() {
     randomNumber = Math.floor(Math.random() * lowerCase.length);
     return randomNumber;
   }
 
-  return passwordTest; 
+  // Output Random Result
+  return randomPassword; 
 
 }
  
