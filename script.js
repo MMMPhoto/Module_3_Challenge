@@ -6,7 +6,6 @@ const lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "
 const upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const special = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
-var randomString = "";
 
 // Write password to the #password input
 function writePassword() {
@@ -17,7 +16,7 @@ function writePassword() {
 
 // Generate Password
 function generatePassword () {
-
+  passwordText = [];
   // Prompt user for desired length of password
   var passwordLength = prompt("Hello. Please select a character length for your password. Password must be between 8 and 128 characters in length.");
 
@@ -35,7 +34,8 @@ function generatePassword () {
   while (!wantLowerCase && !wantUpperCase && !wantNumbers && !wantSpecial) {
     var wantLowerCase = confirm("Would you like to use lower case characters in your password? Click OK for Yes, Cancel for No.");
     var wantUpperCase = confirm("Would you like to use upper case characters in your password? Click OK for Yes, Cancel for No.");
-    var wantNumbers = confirm("Would you like to use numbers in your password? Click OK for Yes, Cancel for No.");var wantSpecial = confirm("Would you like to use special characters in your password? Click OK for Yes, Cancel for No.");
+    var wantNumbers = confirm("Would you like to use numbers in your password? Click OK for Yes, Cancel for No.");
+    var wantSpecial = confirm("Would you like to use special characters in your password? Click OK for Yes, Cancel for No.");
     if (!wantLowerCase && !wantUpperCase && !wantNumbers && !wantSpecial) {
       confirm("At least one parameter must be selected");
     }
@@ -61,6 +61,7 @@ function generatePassword () {
   //Random function
   var randomPassword = getRandom();
   function getRandom() {
+    var randomString = "";
     for (var i = 0; i < passwordLength; i++) {
       var random = Math.floor(Math.random() * randomDataset.length);
       randomString += randomDataset[random];
