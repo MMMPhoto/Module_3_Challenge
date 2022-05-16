@@ -20,14 +20,15 @@ function generatePassword () {
   // Prompt user for desired length of password
   var passwordLength = prompt("Hello. Please select a character length for your password. Password must be between 8 and 128 characters in length.");
 
-  // Check to make sure user entered a number
+  // Check to make sure user entered a number between 8 and 128
   while (isNaN(passwordLength)) {
-    passwordLength = prompt("Please try again. Password must be a number between 8 and 128.");
+    passwordLength = prompt("Please try again. Password must be a number.");
   }
-
-  // Check to make sure password length is between 8 and 128 characters
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Please try again. Password must be between 8 and 128.");
+    if (isNaN(passwordLength)) {
+      passwordLength = prompt("Please try again. Password must be a number.");
+    }
   }
 
   // Ask user to select parameters
@@ -56,7 +57,7 @@ function generatePassword () {
     randomDataset = special.concat(randomDataset);
   }
 
-  console.log(randomDataset);
+  console.log(`var "randomDataset" = ${randomDataset}`);
 
   //Random function
   var randomPassword = getRandom();
